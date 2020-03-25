@@ -13,6 +13,7 @@ def readCommands():
   p.add_argument("--dataDir", dest ="dataDir", type=str, default="../../HRSL/", help=("Input file directory containing .zip files for extraction"))
   p.add_argument("--outDir", dest ="outDir", type=str, default="../../HRSL/tiff_unzip", help=("Output file directory to extract .zip files to"))
   cmdargs = p.parse_args()
+  
   return cmdargs
 
 
@@ -28,16 +29,22 @@ class handleZip(object):
         """
             Function to unzip the files
         """
-        files = []
+        self.files = []
         for file in os.listdir(dataDir):
                 file = str(file)
-                if file.endswith("geotiff.zip"): # take the files we want
-                    files.append(os.path.join(dataDir,file)) # make a list of them
+                if file.endswith(".zip"): # Take the .zip files we want
+                    self.files.append(os.path.join(dataDir,file)) # Make a list of them
         
-        for zip_file in files: # extracting each file
+        for zip_file in self.files: # Extracting each file
             with ZipFile(zip_file, 'r') as zipObj:
-                print('Extracting ',zip_file,' to ',outDir)
-                zipObj.extractall(outDir)
+                listOfFileNames = zipObj.namelist()
+                # Iterate over the file names
+                for fileName in listOfFileNames:
+                    # Check filename endswith .tif
+                    if fileName.endswith('.tif'):
+                        # Extract a single (.tif) file from zip
+                        print('Extracting ',fileName,' to ',outDir)
+                        zipObj.extract(fileName, outDir)
 
 
 if __name__=="__main__":
