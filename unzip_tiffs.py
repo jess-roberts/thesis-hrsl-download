@@ -34,7 +34,7 @@ class handleZip(object):
                 if file.endswith("geotiff.zip"): # take the files we want
                     files.append(os.path.join(dataDir,file)) # make a list of them
         
-        for zip_file in files:
+        for zip_file in files: # extracting each file
             with ZipFile(zip_file, 'r') as zipObj:
                 print('Extracting ',zip_file,' to ',outDir)
                 zipObj.extractall(outDir)
