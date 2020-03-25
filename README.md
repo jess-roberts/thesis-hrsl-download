@@ -1,6 +1,6 @@
 # HRSL Processing
 
-This repository contains scripts to batchprocess geotiff data downloaded from the [Humanitarian Data Exchange](https://data.humdata.org) (HDX) using the HDX Python Api. The scripts are as follows: ```hrsl_downld.py``` controls the batchdownload of data with some user controls (detailed below), ```zip2tiff_merged.py``` unzips the files downloaded (if in .ZIP format, as many are) and merges these geotiffs into one single standardised dataset in a resolution and projection of the user's choosing. This script assumes that the user has some knowledge of the dataset(s) they wish to download. In the case, the default settings download Facebook's [High Resolution Settlement Layer](https://research.fb.com/downloads/high-resolution-settlement-layer-hrsl/) (HRSL) population data, and merge these to create a global geotiff. 
+This repository contains scripts to batchprocess geotiff data downloaded from the [Humanitarian Data Exchange](https://data.humdata.org) (HDX) using the HDX Python Api. The scripts are as follows: ```hrsl_downld.py``` controls the batchdownload of data with some user controls (detailed below), ```zip2tiff_merged.py``` unzips the files downloaded (if in .ZIP format, as many are) and merges these geotiffs into one single standardised dataset in a resolution and projection of the user's choosing. This script assumes that the user has some knowledge of the dataset(s) they wish to download. In this use case, the default settings download Facebook's [High Resolution Settlement Layer](https://research.fb.com/downloads/high-resolution-settlement-layer-hrsl/) (HRSL) population data, and merge these to create a global geotiff. 
 
 ```hrsl_dwnld.py```
 -
@@ -44,4 +44,4 @@ The following command line arguments are available:
 ```--fformat default:'geotiff'```
 >The file type you wish to download.
 
-
+Documentation detailing the HDX Python API download can be found [here](https://pypi.org/project/hdx-python-api/) and details of the library structure/use can be found [here](http://ocha-dap.github.io/hdx-python-api/).
