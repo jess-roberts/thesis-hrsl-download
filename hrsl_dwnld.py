@@ -83,15 +83,15 @@ class HDX_Download(object):
                 # Take data if it matches the keyword and format desired
                 if keyword in all_data[j]['name'] and fformat in all_data[j]['format']:
                     get_data = self.valid_datasets[i].get_resource(index=j)
-            try:
-                # Download it
-                get_data['format'] = '' 
-                url, path = get_data.download(folder=dest)
-                print('Resource URL %s downloaded to %s' % (url, path))
-                get_data = '' # Clear variable to avoid duplicate downloads in the event of failure
-            
-            except:                        
-                print('Data not valid for download.')
+                    try:
+                        # Download it
+                        get_data['format'] = '' 
+                        url, path = get_data.download(folder=dest)
+                        print('Resource URL %s downloaded to %s' % (url, path))
+                        get_data = '' # Clear variable to avoid duplicate downloads in the event of failure
+                    
+                    except:                        
+                        print('Data not valid for download.')
 
 if __name__=="__main__":
     # Creating data objects for download
@@ -101,6 +101,6 @@ if __name__=="__main__":
     cmd = readCommands()
     
     data = HDX_Download(source=cmd.source)
-    data.Download2Comp(keyword=cmd.keyword,fformat=cmd.fformat,dest='./HRSL/')
+    data.Download2Comp(keyword=cmd.keyword,fformat=cmd.fformat,dest='../../HRSL/')
     
     print("--- %s seconds ---" % (time.time() - start_time))
